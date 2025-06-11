@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contador de Segundos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: #444;
+    }
+    #contador {
+      font-size: 2em;
+      color: #85225B;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Segundos desde 22 de julho de 2015</h1>
+  <div id="contador">Calculando...</div>
+
+  <script>
+    function atualizarContador() {
+      const dataInicio = new Date("2015-07-22T00:00:00Z"); // UTC
+      const agora = new Date();
+      const diferencaMs = agora - dataInicio;
+      const diferencaSegundos = Math.floor(diferencaMs / 1000);
+      document.getElementById("contador").textContent = diferencaSegundos.toLocaleString('pt-BR') + " segundos";
+    }
+
+    atualizarContador(); // Chama ao carregar
+    setInterval(atualizarContador, 1000); // Atualiza a cada segundo
+  </script>
+</body>
+</html>
